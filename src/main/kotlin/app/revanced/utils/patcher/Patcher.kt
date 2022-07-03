@@ -11,7 +11,16 @@ import app.revanced.patcher.extensions.PatchExtensions.patchName
 import app.revanced.patcher.patch.Patch
 import app.revanced.patcher.util.patch.implementation.JarPatchBundle
 
+<<<<<<< HEAD
 fun Patcher.addPatchesFiltered() {
+||||||| parent of 61bf032 (feat: `--default-exclude` switch)
+fun Patcher.addPatchesFiltered(
+    excludePatches: Boolean = false
+) {
+=======
+fun Patcher.addPatchesFiltered(
+) {
+>>>>>>> 61bf032 (feat: `--default-exclude` switch)
     val packageName = this.data.packageMetadata.packageName
     val packageVersion = this.data.packageMetadata.packageVersion
 
@@ -26,10 +35,10 @@ fun Patcher.addPatchesFiltered() {
             val args = MainCommand.args.sArgs?.pArgs!!
 
             if (args.excludedPatches.contains(patchName)) {
-                logger.info("$prefix: Explicitely excluded")
+                logger.info("$prefix: Explicitly excluded")
                 return@patch
             } else if (!patch.include && !args.includedPatches.contains(patchName)) {
-                logger.info("$prefix: Not explicitely included")
+                logger.info("$prefix: Not explicitly included")
                 return@patch
             }
 
