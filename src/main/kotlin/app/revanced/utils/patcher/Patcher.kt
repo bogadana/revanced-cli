@@ -62,7 +62,7 @@ fun Patcher.addPatchesFiltered(
 }
 
 fun Patcher.applyPatchesVerbose() {
-    this.applyPatches().forEach { (patch, result) ->
+    this.applyPatches(resolveFingerprintsFully = args.pArgs?.testFingerprintsOnly!!).forEach { (patch, result) ->
         if (result.isSuccess) {
             logger.info("$patch succeeded")
             return@forEach

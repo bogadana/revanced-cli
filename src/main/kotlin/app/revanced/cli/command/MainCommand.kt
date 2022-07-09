@@ -5,6 +5,7 @@ import app.revanced.cli.patcher.Patcher
 import app.revanced.cli.patcher.logging.impl.PatcherLogger
 import app.revanced.cli.signing.Signing
 import app.revanced.cli.signing.SigningOptions
+import app.revanced.cli.sigtest.FingerprintTester
 import app.revanced.patcher.PatcherOptions
 import app.revanced.patcher.extensions.PatchExtensions.compatiblePackages
 import app.revanced.patcher.extensions.PatchExtensions.description
@@ -80,6 +81,9 @@ internal object MainCommand : Runnable {
 
         @Option(names = ["--exclusive"], description = ["Exclusively include patches"])
         var defaultExclude = false
+
+        @Option(names = ["--test-fingerprints"])
+        var testFingerprintsOnly = false
 
         @Option(names = ["-i", "--include"], description = ["Include patches"])
         var includedPatches = arrayOf<String>()
@@ -162,6 +166,11 @@ internal object MainCommand : Runnable {
         else File(args.cacheDirectory).resolve("${outputFile.nameWithoutExtension}_raw.apk")
 
         Patcher.start(patcher, patchedFile)
+
+        if (args.testFingerprintsOnly == true) {
+            FingerprintTester().start(patcher)
+            return
+        }
 
         if (!args.mount) {
             Signing.start(
