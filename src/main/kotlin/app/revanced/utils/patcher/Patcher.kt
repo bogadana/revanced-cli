@@ -26,7 +26,7 @@ fun Patcher.addPatchesFiltered(
 
             val args = MainCommand.args.sArgs?.pArgs!!
 
-            if (excludePatches && args.excludedPatches.contains(patchName)) {
+            if (args.excludedPatches.contains(patchName)) {
                 logger.info("$prefix: Excluded by user")
                 return@patch
             } else if (!patch.include && !args.includedPatches.contains(patchName)) {
@@ -62,7 +62,7 @@ fun Patcher.addPatchesFiltered(
 }
 
 fun Patcher.applyPatchesVerbose() {
-    this.applyPatches(resolveFingerprintsFully = args.pArgs?.testFingerprintsOnly!!).forEach { (patch, result) ->
+    this.applyPatches(resolveFingerprintsFully = args.sArgs?.pArgs?.testFingerprintsOnly!!).forEach { (patch, result) ->
         if (result.isSuccess) {
             logger.info("$patch succeeded")
             return@forEach
