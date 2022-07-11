@@ -29,8 +29,8 @@ fun Patcher.addPatchesFiltered(
             if (args.excludedPatches.contains(patchName)) {
                 logger.info("$prefix: Excluded by user")
                 return@patch
-            } else if (!patch.include && !args.includedPatches.contains(patchName)) {
-                logger.info("$prefix: Patch is excluded by default")
+            } else if ((!patch.include || args.defaultExclude) && !args.includedPatches.contains(patchName)) {
+                logger.info("$prefix: Not explicitly included")
                 return@patch
             }
 

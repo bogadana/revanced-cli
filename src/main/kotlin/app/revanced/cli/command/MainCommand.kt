@@ -79,7 +79,7 @@ internal object MainCommand : Runnable {
         @Option(names = ["-e", "--exclude"], description = ["Explicitly exclude patches"])
         var excludedPatches = arrayOf<String>()
 
-        @Option(names = ["--exclusive"], description = ["Exclusively include patches"])
+        @Option(names = ["--exclusive"], description = ["Only installs the patches you include, not including any patch by default"])
         var defaultExclude = false
 
         @Option(names = ["--test-fingerprints"])

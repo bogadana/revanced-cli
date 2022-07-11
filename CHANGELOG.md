@@ -1,3 +1,17 @@
+## [2.5.2](https://github.com/revanced/revanced-cli/compare/v2.5.1...v2.5.2) (2022-07-10)
+
+
+### Bug Fixes
+
+* `defaultExclude` unused ([2015c2a](https://github.com/revanced/revanced-cli/commit/2015c2a1dcc0290af237e2eb1ab4aaf5fc84d382))
+
+## [2.5.1](https://github.com/revanced/revanced-cli/compare/v2.5.0...v2.5.1) (2022-07-10)
+
+
+### Bug Fixes
+
+* Make clear what the --exclusive command actually does ([a26b0ea](https://github.com/revanced/revanced-cli/commit/a26b0ea64dcd0757b5b49c09137959751874d955))
+
 # [2.5.0](https://github.com/revanced/revanced-cli/compare/v2.4.0...v2.5.0) (2022-07-10)
 
 
